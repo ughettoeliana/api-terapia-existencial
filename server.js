@@ -7,6 +7,7 @@ dotenv.config();
 import userRoute from './routes/user.js';
 import serviceRoute from './routes/service.js';
 import therapistRoute from './routes/therapist.js';
+import authRoute from './routes/auth.js';
 
 
 const app = express();
@@ -15,6 +16,7 @@ app.use(express.json());
 app.use('/api', userRoute)
 app.use('/api', serviceRoute)
 app.use('/api', therapistRoute)
+//app.use('/api', authRoute)
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{

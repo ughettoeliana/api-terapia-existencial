@@ -4,6 +4,7 @@ const createUser = async (userData) => {
   try {
     const user = new userSchema(userData);
     const savedUser = await user.save();
+    
     return savedUser;
   } catch (error) {
     throw error;
