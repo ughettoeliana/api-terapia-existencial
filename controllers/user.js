@@ -1,21 +1,3 @@
-// import userService from "../services/user.js";
-
-// function createUser(req, res) {
-//   userService
-//     .createUser(req.body)
-//     .then(() => {
-//       res.status(201).json({ msg: "Se creo la cuenta con éxito" });
-//     })
-//     .catch((error) => {
-//       res.status(500).json({ msg: "No se pudo crear la cuenta", error: error });
-//     });
-// }
-
-// export default { createUser };
-
-// userController.js
-
-//import { createUser } from '';
 import userService from "../services/user.js";
 
  const createUser = async (req, res) => {

@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-//import user from "../services/user";
 
 const UserSchema = mongoose.Schema({
     email: {
