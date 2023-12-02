@@ -1,52 +1,52 @@
-import userSchema from "../schemas/user.js";
+import serviceSchema from "../schemas/service.js";
 
-const createUser = async (userData) => {
+const createService = async (serviceData) => {
   try {
-    const user = new userSchema(userData);
-    const savedUser = await user.save();
-    return savedUser;
+    const service = new serviceSchema(serviceData);
+    const savedService = await service.save();
+    return savedService;
   } catch (error) {
     throw error;
   }
 };
 
-const getUsers = async () => {
+const getServices = async () => {
   try {
-    const foundUsers = await userSchema.find();
-    return foundUsers;
+    const foundServices = await serviceSchema.find();
+    return foundServices;
   } catch (error) {
     throw error;
   }
 };
 
-const getUserById = async (id) => {
+const getServiceById = async (id) => {
   try {
-    const foundUser = await userSchema.findById(id);
-    return foundUser;
+    const foundService = await serviceSchema.findById(id);
+    return foundService;
   } catch (error) {
     throw error;
   }
 };
 
-const updateUser = async (id, { email, password }) => {
+const updateService = async (id, { name, modality, time, price }) => {
   try {
-    const updateUser = await userSchema.updateOne(
+    const updateService = await serviceSchema.updateOne(
       { _id: id },
-      { $set: { email, password } }
+      { $set:  { name, modality, time, price }}
     );
-    return updateUser;
+    return updateService;
   } catch (error) {
     throw error;
   }
 };
 
-const deleteUser = async (id) => {
+const deleteService = async (id) => {
   try {
-    const deletedUser = await userSchema.findOneAndDelete({ _id: id });
-    return deletedUser;
+    const deletedService = await serviceSchema.findOneAndDelete({ _id: id });
+    return deletedService;
   } catch (error) {
     throw error;
   }
 };
 
-export default { createUser, getUsers, getUserById, updateUser, deleteUser };
+export default { createService, getServices, getServiceById, updateService, deleteService };

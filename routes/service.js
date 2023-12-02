@@ -1,15 +1,15 @@
 import express from "express";
-import userController from '../controllers/user.js'
-import { validateCreateUser } from '../middlewares/user.js'
+import serviceController from '../controllers/service.js'
+import { validateCreateService } from '../middlewares/service.js'
 const route = express.Router();
 
 //CRUD of the services
 
- route.post('/users', [validateCreateUser], userController.createUser)
- route.get('/users', userController.getUsers)
- route.get('/user/:id', userController.getUserById)
- route.put('/user/:id', userController.updateUser)
- route.delete('/user/:id', userController.deleteUser)
+ route.post('/services', [validateCreateService], serviceController.createService)
+ route.get('/services', serviceController.getServices)
+ route.get('/service/:id', serviceController.getServiceById)
+ route.put('/service/:id', serviceController.updateService)
+ route.delete('/service/:id', serviceController.deleteService)
 
 
 export default route;

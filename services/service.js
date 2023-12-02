@@ -1,37 +1,52 @@
-// //import { db } from "./firebase.js";
-// import { createUserWithEmailAndPassword } from "firebase/auth";
-// import { createUserProfile } from "./user.js";
-// import { auth, db } from "../main.js";
+import serviceSchema from "../schemas/service.js";
 
-// async function createAccount(account) {
-//   const email = account.email;
-//   const password = account.password;
-//   try {
-//     const userCredentials = await createUserWithEmailAndPassword(
-//       auth,
-//       email,
-//       password
-//     );
+const createService = async (serviceData) => {
+  try {
+    const service = new serviceSchema(serviceData);
+    const savedService = await service.save();
+    return savedService;
+  } catch (error) {
+    throw error;
+  }
+};
 
-//     const rol = "user";
-//     createUserProfile(userCredentials.user.uid, { email, rol });
+const getServices = async () => {
+  try {
+    const foundServices = await serviceSchema.find();
+    return foundServices;
+  } catch (error) {
+    throw error;
+  }
+};
 
-//     return {
-//       id: userCredentials.user.uid,
-//       email: userCredentials.user.email,
-//       rol: rol,
-//     };
-//   } catch (error) {
-//     return {
-//       code: error.code,
-//       message: error.message,
-//     };
-//   }
-// }
+const getServiceById = async (id) => {
+  try {
+    const foundService = await serviceSchema.findById(id);
+    return foundService;
+  } catch (error) {
+    throw error;
+  }
+};
 
-// export async function createUserProfile(id, data) {
-//   const refUser = doc(db, `users/${id}`);
-//   return setDoc(refUser, { ...data, created_at: serverTimestamp() });
-// }
+const updateService = async (id, { email, password }) => {
+  try {
+    const updateService = await serviceSchema.updateOne(
+      { _id: id },
+      { $set: { email, password } }
+    );
+    return updateService;
+  } catch (error) {
+    throw error;
+  }
+};
 
-// export default { createAccount };
+const deleteService = async (id) => {
+  try {
+    const deletedService = await serviceSchema.findOneAndDelete({ _id: id });
+    return deletedService;
+  } catch (error) {
+    throw error;
+  }
+};
+
+export default { createService, getServices, getServiceById, updateService, deleteService };
