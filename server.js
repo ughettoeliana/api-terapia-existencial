@@ -6,6 +6,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import userRoute from './routes/user.js';
 import serviceRoute from './routes/service.js';
+import therapistRoute from './routes/therapist.js';
 
 
 const app = express();
@@ -13,6 +14,7 @@ app.use(cors());
 app.use(express.json());
 app.use('/api', userRoute)
 app.use('/api', serviceRoute)
+app.use('/api', therapistRoute)
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{

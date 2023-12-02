@@ -28,11 +28,11 @@ const getServiceById = async (id) => {
   }
 };
 
-const updateService = async (id, { email, password }) => {
+const updateService = async (id,  { name, modality, time, price }) => {
   try {
     const updateService = await serviceSchema.updateOne(
       { _id: id },
-      { $set: { email, password } }
+      { $set:  { name, modality, time, price }}
     );
     return updateService;
   } catch (error) {
