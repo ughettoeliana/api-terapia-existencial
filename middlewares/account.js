@@ -4,7 +4,6 @@ import accountServices from '../services/account.js';
 export async function validateAccount(req, res, next) {
   try {
     const data = await accountSchema.validate(req.body, { runValidators: true });
-    console.log('holaaa')
     req.body = data;
     next();
   } catch (err) {

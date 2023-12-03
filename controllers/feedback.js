@@ -1,9 +1,12 @@
 import feedbackServices from "../services/feedback.js";
+import accountSchema from "../schemas/account.js";
 
 const createFeedback = async (req, res) => {
   try {
     const feedbackData = req.body;
-    const createdFeedback = await feedbackServices.createFeedback(feedbackData);
+    const accountData = await accountSchema.findOne({ email: feedbackData.email });
+    const data = { userId: accountData._id.toString(), serviceId: feedbackData.serviceId, comment: feedbackData.comment}
+    const createdFeedback = await feedbackServices.createFeedback(data);
     res.status(201).json({ data: createdFeedback });
   } catch (error) {
     res

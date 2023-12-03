@@ -32,8 +32,8 @@ import userServices from "../services/user.js";
  const updateUser = async (req, res) => {
   try {
     const {id} = req.params
-    const {email, password} = req.body
-    const updateUser = await userServices.updateUser(id, {email, password});
+    const {email, password, user} = req.body
+    const updateUser = await userServices.updateUser(id, {email, password, user});
     res.status(201).json({ data: updateUser });
   } catch (error) {
     res.status(500).json({ msg: 'Error al crear el usuario', error: error.message });

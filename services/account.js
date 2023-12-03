@@ -5,14 +5,12 @@ import jwt from "jsonwebtoken";
 
 async function createAccount(account) {
   try {
-    console.log("estoy en create account");
 
     const newAccount = new accountSchema(account);
     newAccount.password = await bcrypt.hash(
       account.password,
       await bcrypt.genSalt(10)
     );
-    console.log("newAccount", newAccount);
 
     await newAccount.save();
   } catch (error) {

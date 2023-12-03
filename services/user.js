@@ -33,7 +33,7 @@ const updateUser = async (id, { email, password }) => {
   try {
     const updateUser = await userSchema.updateOne(
       { _id: id },
-      { $set:  { email, password }}
+      { $set:  { email, password, rol }}
     );
     return updateUser;
   } catch (error) {

@@ -1,4 +1,4 @@
-import serviceServices from "../services/user.js";
+import serviceServices from "../services/service.js";
 
 const createService = async (req, res) => {
   try {
@@ -19,7 +19,7 @@ const getServices = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ msg: "Error al crear el servicio", error: error.message });
+      .json({ msg: "Error al traer el servicio", error: error.message });
   }
 };
 
@@ -31,7 +31,7 @@ const getServiceById = async (req, res) => {
   } catch (error) {
     res
       .status(500)
-      .json({ msg: "Error al crear el servicio", error: error.message });
+      .json({ msg: "Error al traer el servicio", error: error.message });
   }
 };
 
