@@ -7,7 +7,7 @@ dotenv.config();
 import userRoute from './routes/user.js';
 import serviceRoute from './routes/service.js';
 import feedbackRoute from './routes/feedback.js';
-import AccountRoute from './routes/account.js';
+//import AccountRoute from './routes/account.js';
 
 
 const app = express();
@@ -16,7 +16,7 @@ app.use(express.json());
 app.use('/api', userRoute)
 app.use('/api', serviceRoute)
 app.use('/api', feedbackRoute)
-app.use('/api', AccountRoute)
+//app.use('/api', AccountRoute)
 
 mongoose.connect(process.env.MONGODB_URI)
 .then(()=>{

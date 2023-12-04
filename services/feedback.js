@@ -28,6 +28,15 @@ const getFeedbackById = async (id) => {
   }
 };
 
+const getFeedbackByServiceId = async (serviceId) => {
+  try {
+    const foundFeedback = await feedbackSchema.find({ serviceId });
+    return foundFeedback;
+  } catch (error) {
+    throw error;
+  }
+};
+
 const updateFeedback = async (id, { userId, serviceId, comment}) => {
   try {
     const updateFeedback = await feedbackSchema.updateOne(
@@ -49,4 +58,4 @@ const deleteFeedback = async (id) => {
   }
 };
 
-export default { createFeedback, getFeedbacks, getFeedbackById, updateFeedback, deleteFeedback };
+export default { createFeedback, getFeedbacks, getFeedbackById, updateFeedback, deleteFeedback, getFeedbackByServiceId };

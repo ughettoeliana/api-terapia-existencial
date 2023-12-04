@@ -1,9 +1,10 @@
-import accountSchema from "../schemas/account.js";
+//import accountSchema from "../schemas/account.js";
+import userSchema from "../schemas/user.js";
 import accountServices from '../services/account.js';
 
 export async function validateAccount(req, res, next) {
   try {
-    const data = await accountSchema.validate(req.body, { runValidators: true });
+    const data = await userSchema.validate(req.body, { runValidators: true });
     req.body = data;
     next();
   } catch (err) {

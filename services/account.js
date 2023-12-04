@@ -1,12 +1,13 @@
-import accountSchema from "../schemas/account.js";
+//import accountSchema from "../schemas/account.js";
 import tokenSchema from "../schemas/token.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import userSchema from "../schemas/user.js";
 
 async function createAccount(account) {
   try {
 
-    const newAccount = new accountSchema(account);
+    const newAccount = new userSchema(account);
     newAccount.password = await bcrypt.hash(
       account.password,
       await bcrypt.genSalt(10)
@@ -19,7 +20,7 @@ async function createAccount(account) {
 }
 
 async function verifyAccount(account) {
-  const accountData = await accountSchema.findOne({ email: account.email });
+  const accountData = await userSchema.findOne({ email: account.email });
 
   if (!accountData) {
     throw { msg: "No se encuentra el email en la base de datos" };
